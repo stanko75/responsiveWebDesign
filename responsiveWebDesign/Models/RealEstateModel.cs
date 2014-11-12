@@ -2,7 +2,7 @@
 {
   using System;
 
-  public class RealEstate
+  public class RealEstateModel
   {
     public int Id { get; set; }
     public string Company { get; set; }
