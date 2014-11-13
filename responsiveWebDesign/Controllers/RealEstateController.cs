@@ -5,6 +5,8 @@ namespace responsiveWebDesign.Controllers
   using System;
   using System.Collections.Generic;
 
+  using MySql.Data.MySqlClient;
+
   using responsiveWebDesign.Models;
 
   public class RealEstateController : ApiController
@@ -30,6 +32,33 @@ namespace responsiveWebDesign.Controllers
 
     public IEnumerable<RealEstateModel> GetAllRealEstates()
     {
+      string MyConString = System.Configuration.ConfigurationManager.ConnectionStrings["MovieDBContext"].ConnectionString;
+
+      string sql = "select * from jos_categories";
+
+      try
+      {
+        var connection = new MySqlConnection(MyConString);
+        var cmdSel = new MySqlCommand(sql, connection);
+
+        connection.Open();
+
+        MySqlDataReader dataReader = cmdSel.ExecuteReader();
+
+        var pom = new List<string>();
+
+        while (dataReader.Read())
+        {
+          object bugId = dataReader["title"];
+          pom.Add(bugId.ToString());
+        }
+      }
+      catch (Exception e)
+      {
+        
+      }
+
+
       return realEstates;
     }
   }
