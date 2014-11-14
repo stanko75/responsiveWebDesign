@@ -14,9 +14,9 @@
     public string Link { get; set; }
     public int Page { get; set; }
     public int Active { get; set; }
-    public DateTime UpdateTime { get; set; }
-    public DateTime UpdateDate { get; set; }
-    public DateTime InsertTime { get; set; }
-    public DateTime InsertDate { get; set; }
+    public string UpdateTime { get; set; }
+    public string UpdateDate { get; set; }
+    public string InsertTime { get; set; }
+    public string InsertDate { get; set; }
   }
 }

@@ -6,26 +6,25 @@ $(document).ready(function () {
         .done(function (data) {
             // On success, 'data' contains a list of products.
             $.each(data, function (key, item) {
-                debugger;
-                // Add a list item for the product.
-                $('<li>', {
-                    text: formatItem(item)
-                }).appendTo($('#realEstates'));
+
+                $('#realEstatesTable > tbody:last').append(
+                    '<tr>' +
+                        '<td>' + item.Id + '</td>' +
+                        '<td>' + item.Company + '</td>' + 
+                        '<td>' + item.City + '</td>' +
+                        '<td>' + item.Location + '</td>' +
+                        '<td>' + item.Type + '</td>' +
+                        '<td>' + item.SquareMeters + '</td>' +
+                        '<td>' + item.Price + '</td>' +
+                        '<td> <a href="' + item.Link + '" target=_blank>' + item.Link + '</td>' +
+                        '<td>' + item.Page + '</td>' +
+                        '<td>' + item.Active + '</td>' +
+                        '<td>' + item.UpdateTime + '</td>' +
+                        '<td>' + item.UpdateDate + '</td>' +
+                        '<td>' + item.InsertTime + '</td>' +
+                        '<td>' + item.InsertDate + '</td>' +
+                    '</tr>'
+                );
             });
         });
 });
-
-function formatItem(item) {
-    return item.City + ': ' + item.Link;
-}
-
-function find() {
-    var id = $('#prodId').val();
-    $.getJSON(uri + '/' + id)
-        .done(function (data) {
-            $('#product').text(formatItem(data));
-        })
-        .fail(function (jqXHR, textStatus, err) {
-            $('#product').text('Error: ' + err);
-        });
-}
