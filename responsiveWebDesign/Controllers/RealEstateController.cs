@@ -22,7 +22,7 @@ namespace responsiveWebDesign.Controllers
                                                                       Price = 2,
                                                                       Link = "www.milosev.com" ,
                                                                       Page = 1,
-                                                                      Active = true,
+                                                                      Active = 1,
                                                                       UpdateTime = new DateTime(),
                                                                       UpdateDate = new DateTime(),
                                                                       InsertTime = new DateTime(),
@@ -34,7 +34,7 @@ namespace responsiveWebDesign.Controllers
     {
       string MyConString = System.Configuration.ConfigurationManager.ConnectionStrings["MovieDBContext"].ConnectionString;
 
-      string sql = "select * from jos_categories";
+      string sql = "select * from RealEstate";
 
       try
       {
@@ -45,13 +45,29 @@ namespace responsiveWebDesign.Controllers
 
         MySqlDataReader dataReader = cmdSel.ExecuteReader();
 
-        var pom = new List<string>();
+        List<RealEstateModel> pom = new List<RealEstateModel>();
 
         while (dataReader.Read())
         {
-          object bugId = dataReader["title"];
-          pom.Add(bugId.ToString());
+          pom.Add(new RealEstateModel
+                    {
+                      Id = int.Parse(dataReader["id"].ToString()),
+                      Company = dataReader["company"].ToString(),
+                      City = dataReader["city"].ToString(),
+                      Location = dataReader["location"].ToString(),
+                      Type = dataReader["type"].ToString(),
+                      SquareMeters = int.Parse(dataReader["squaremeters"].ToString()),
+                      Price = float.Parse(dataReader["price"].ToString()),
+                      Link = dataReader["link"].ToString(),
+                      Active = int.Parse(dataReader["active"].ToString()),
+                      //UpdateTime = Convert.ToDateTime(dataReader["updatetime"].ToString()),
+                      //UpdateDate = Convert.ToDateTime(dataReader["updatedate"].ToString()),
+                      //InsertTime = Convert.ToDateTime(dataReader["inserttime"].ToString()),
+                      //InsertDate = Convert.ToDateTime(dataReader["insertdate"].ToString())
+                    });
         }
+        return pom;
+
       }
       catch (Exception e)
       {

@@ -13,7 +13,7 @@
     public float Price { get; set; }
     public string Link { get; set; }
     public int Page { get; set; }
-    public bool Active { get; set; }
+    public int Active { get; set; }
     public DateTime UpdateTime { get; set; }
     public DateTime UpdateDate { get; set; }
     public DateTime InsertTime { get; set; }
