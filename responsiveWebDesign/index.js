@@ -1,6 +1,6 @@
-﻿var from = 0,
-    to = 10,
-    uri = 'api/realestate/?from=' + from + '&to=' + to;
+﻿var fromGlobal = 0,
+    toGlobal = 10,
+    uri = 'api/realestate/?from=' + fromGlobal + '&to=' + toGlobal;
 
 $(document).ready(function () {
     // Send an AJAX request
@@ -8,14 +8,14 @@ $(document).ready(function () {
 
     $(window).resize(function() {
         if ($("#realEstatesTable").height() < $(window).height()) {
-            loadData(from, to);
+            loadData(fromGlobal, toGlobal);
         }
     });
 
     $(window).scroll(function() { //detect page scroll
         if ($(window).scrollTop() + $(window).height() == $(document).height()) //user scrolled to bottom of the page?
         {
-            loadData(from, to);
+            loadData(fromGlobal, toGlobal);
         }
     });
 
@@ -26,6 +26,9 @@ $(document).ready(function () {
             .done(function (data) {
                 from = to;
                 to = to + 10;
+
+                fromGlobal = from;
+                toGlobal = to;
                 // On success, 'data' contains a list of products.
                 $.each(data, function (key, item) {
 
