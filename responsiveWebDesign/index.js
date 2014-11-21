@@ -24,8 +24,7 @@ $(document).ready(function () {
         uri = 'api/realestate/?from=' + from + '&to=' + to;
         $.getJSON(uri)
             .done(function (data) {
-                from = to;
-                to = to + 10;
+                from = from + 10;
 
                 fromGlobal = from;
                 toGlobal = to;
