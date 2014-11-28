@@ -38,7 +38,13 @@ $(document).ready(function () {
                             '<td>' + item.Type + '</td>' +
                             '<td>' + item.SquareMeters + '</td>' +
                             '<td>' + item.Price + '</td>' +
-                            '<td> <a href="' + item.Link + '" target=_blank>' + item.Link + '</td>' +
+                            '<td>' +
+
+                                '<a href="' + item.Link + '" target=_blank>' +
+                                    item.Link +
+                                '</a>' +
+
+                            '</td>' +
                             '<td>' + item.Page + '</td>' +
                             '<td>' + item.Active + '</td>' +
                             '<td>' + item.UpdateTime + '</td>' +
