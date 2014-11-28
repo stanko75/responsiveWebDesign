@@ -128,7 +128,6 @@
     <Content Include="index.css" />
     <Content Include="index.html" />
     <Content Include="index.js" />
-    <Content Include="jquery-2.1.1.js" />
     <Content Include="lib\idangerous.swiper.js" />
     <Content Include="lib\idangerous.swiper.scrollbar-2.1.js" />
     <Content Include="lib\jquery-2.1.1.js" />
