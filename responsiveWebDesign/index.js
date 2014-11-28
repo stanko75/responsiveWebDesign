@@ -1,6 +1,5 @@
 ﻿var fromGlobal = 0,
-    toGlobal = 10,
-    uri = 'api/realestate/?from=' + fromGlobal + '&to=' + toGlobal;
+    numberOfRecordsGlobal = 10;
 
 $(document).ready(function () {
     // Send an AJAX request
@@ -8,27 +7,26 @@ $(document).ready(function () {
 
     $(window).resize(function() {
         if ($("#realEstatesTable").height() < $(window).height()) {
-            loadData(fromGlobal, toGlobal);
+            loadData(fromGlobal, numberOfRecordsGlobal);
         }
     });
 
     $(window).scroll(function() { //detect page scroll
         if ($(window).scrollTop() + $(window).height() == $(document).height()) //user scrolled to bottom of the page?
         {
-            loadData(fromGlobal, toGlobal);
+            loadData(fromGlobal, numberOfRecordsGlobal);
         }
     });
 
-
-        function loadData(from, to) {
-        uri = 'api/realestate/?from=' + from + '&to=' + to;
+    function loadData(from, numberOfRecordsGlobal) {
+        var uri = 'api/realestate/?from=' + from + '&numberOfRecords=' + numberOfRecordsGlobal;
         $.getJSON(uri)
             .done(function (data) {
                 from = from + 10;
 
                 fromGlobal = from;
-                toGlobal = to;
-                // On success, 'data' contains a list of products.
+                numberOfRecordsGlobal = numberOfRecordsGlobal;
+
                 $.each(data, function (key, item) {
 
                     $('#realEstatesTable > tbody:last').append(
@@ -51,7 +49,7 @@ $(document).ready(function () {
                     );
                 });
                 if ($("#realEstatesTable").height() < $(window).height()) {
-                    loadData(from, to);
+                    loadData(from, numberOfRecordsGlobal);
                 }
         });
 

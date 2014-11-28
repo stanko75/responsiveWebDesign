@@ -11,11 +11,11 @@ namespace responsiveWebDesign.Controllers
 
   public class RealEstateController : ApiController
   {
-      public IEnumerable<RealEstateModel> GetAllRealEstates([FromUri] int from, int to)
+      public IEnumerable<RealEstateModel> GetAllRealEstates([FromUri] int from, int numberOfRecords)
     {
       string MyConString = System.Configuration.ConfigurationManager.ConnectionStrings["MovieDBContext"].ConnectionString;
 
-      string sql = "select * from RealEstate limit " + from + ", " + to;
+      string sql = "select * from RealEstate limit " + from + ", " + numberOfRecords;
 
       try
       {
