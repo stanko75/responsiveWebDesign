@@ -75,7 +75,7 @@ $(document).ready(function () {
                     $('.swiper-container').css({ height: $('.swiper-container').find('table').height() });
 
                     //ReInit Swiper
-                    swiper.reInit();
+                    mySwiper.reInit();
                 }
         });
 
