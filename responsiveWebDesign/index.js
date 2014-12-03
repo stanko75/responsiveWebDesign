@@ -2,6 +2,19 @@
     numberOfRecordsGlobal = 10;
 
 $(document).ready(function () {
+
+    var startX,
+        mySwiper = new Swiper('.swiper-container', {
+            cssWidthAndHeight: false,
+            loop: true,
+            grabCursor: true,
+            paginationClickable: true,
+            onTouchStart: function (swiper) {
+                swiper.fixLoop();
+                startX = swiper.getWrapperTranslate('x');
+            },
+        });
+
     // Send an AJAX request
     loadData(0, 10);
 
@@ -56,6 +69,13 @@ $(document).ready(function () {
                 });
                 if ($("#realEstatesTable").height() < $(window).height()) {
                     loadData(from, numberOfRecordsGlobal);
+                } else {
+                    $('.swiper-container').css({ height: '' });
+                    //Calc Height
+                    $('.swiper-container').css({ height: $('.swiper-container').find('table').height() });
+
+                    //ReInit Swiper
+                    swiper.reInit();
                 }
         });
 
