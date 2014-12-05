@@ -13,6 +13,9 @@ $(document).ready(function () {
                 swiper.fixLoop();
                 startX = swiper.getWrapperTranslate('x');
             },
+            onSlideChangeEnd: function() {
+                loadData2(0, 10);
+            }
         });
 
     // Send an AJAX request
@@ -32,7 +35,7 @@ $(document).ready(function () {
     });
 
     function loadData(from, numberOfRecordsGlobal) {
-        var uri = 'api/realestate/?from=' + from + '&numberOfRecords=' + numberOfRecordsGlobal;
+        var uri = 'api/realestate/GetAllRealEstates?from=' + from + '&numberOfRecords=' + numberOfRecordsGlobal;
         $.getJSON(uri)
             .done(function (data) {
                 from = from + 10;
@@ -72,7 +75,7 @@ $(document).ready(function () {
                 } else {
                     $('.swiper-container').css({ height: '' });
                     //Calc Height
-                    $('.swiper-container').css({ height: $('.swiper-container').find('table').height() });
+                    $('.swiper-container').css({ height: $('.swiper-container').find('#realEstatesTable').height() });
 
                     //ReInit Swiper
                     mySwiper.reInit();
@@ -80,4 +83,55 @@ $(document).ready(function () {
         });
 
     };
+
+    function loadData2(from, numberOfRecordsGlobal) {
+        var uri = 'api/realestate/GetRealEstatesWithCondition?from=' + from + '&numberOfRecords=' + numberOfRecordsGlobal;
+        $.getJSON(uri)
+            .done(function (data) {
+                from = from + 10;
+
+                fromGlobal = from;
+                numberOfRecordsGlobal = numberOfRecordsGlobal;
+
+                $.each(data, function (key, item) {
+
+                    $('.swiper-slide-active>#realEstatesTable2>tbody:last').append(
+                        '<tr>' +
+                            '<td>' + item.Id + '</td>' +
+                            '<td>' + item.Company + '</td>' +
+                            '<td>' + item.City + '</td>' +
+                            '<td>' + item.Location + '</td>' +
+                            '<td>' + item.Type + '</td>' +
+                            '<td>' + item.SquareMeters + '</td>' +
+                            '<td>' + item.Price + '</td>' +
+                            '<td>' +
+
+                                '<a href="' + item.Link + '" target=_blank>' +
+                                    item.Link +
+                                '</a>' +
+
+                            '</td>' +
+                            '<td>' + item.Page + '</td>' +
+                            '<td>' + item.Active + '</td>' +
+                            '<td>' + item.UpdateTime + '</td>' +
+                            '<td>' + item.UpdateDate + '</td>' +
+                            '<td>' + item.InsertTime + '</td>' +
+                            '<td>' + item.InsertDate + '</td>' +
+                        '</tr>'
+                    );
+                });
+                if ($("#realEstatesTable2").height() < $(window).height()) {
+                    loadData2(from, numberOfRecordsGlobal);
+                } else {
+                    $('.swiper-container').css({ height: '' });
+                    //Calc Height
+                    $('.swiper-container').css({ height: $('.swiper-container').find('#realEstatesTable2').height() });
+
+                    //ReInit Swiper
+                    mySwiper.reInit();
+                }
+            });
+        //$('.swiper-slide-active>#test').append("test2");
+    };
+
 });
