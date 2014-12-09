@@ -1,7 +1,7 @@
 ﻿(function (ns) {
 
     function reInit() {
-        
+        window.rs.swiper.reInit();
     }
 
     var createSwipper = $('.swiper-container').swiper({

@@ -6,36 +6,6 @@
 
 $(document).ready(function () {
 
-    var startX,
-        mySwiper = new Swiper('.swiper-container', {
-            cssWidthAndHeight: false,
-            loop: true,
-            grabCursor: true,
-            paginationClickable: true,
-            onTouchStart: function (swiper) {
-                swiper.fixLoop();
-                startX = swiper.getWrapperTranslate('x');
-            },
-            onSlideChangeEnd: function (swiper, direction) {
-                switch (swiper.activeIndex) {
-                    case 2:
-                        uri = 'api/realestate/GetRealEstatesWithCondition?from=';
-                        searchQuery = '.swiper-slide-active>#realEstatesTable2>tbody:last';
-                        id = "#realEstatesTable2";
-                        break;
-                    case 3:
-                        uri = 'api/realestate/GetAllRealEstates?from=';
-                        //searchQuery = '#realEstatesTable > tbody:last';
-                        searchQuery = '.swiper-slide-active>#realEstatesTable>tbody:last';
-                        id = "#realEstatesTable";
-                        break;
-                }
-                $(searchQuery).find("tr:gt(0)").remove();
-                $(id).find("tr:gt(0)").remove();
-                loadData(0, 10, uri, id, searchQuery);
-            }
-        });
-
     loadData(0, 10, uri, id, searchQuery);
 
     $(window).resize(function() {
@@ -94,7 +64,7 @@ $(document).ready(function () {
                     $('.swiper-container').css({ height: '' });
                     $('.swiper-container').css({ height: $('.swiper-container').find(id).height() });
 
-                    mySwiper.reInit();
+                    window.rs.Swiper.reInit();
                 }
         });
 
