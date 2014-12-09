@@ -1,3 +1,5 @@
-﻿(function Bootstrap(ns) {
-    ns.swiper = ns.Swiper.reBind();
-}(window.rs));
+﻿window.onload = function() {
+    (function Bootstrap(ns) {
+        ns.swiper = ns.Swiper.reBind();
+    }(window.rs));
+}

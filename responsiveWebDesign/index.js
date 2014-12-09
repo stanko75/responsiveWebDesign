@@ -64,7 +64,7 @@ $(document).ready(function () {
                     $('.swiper-container').css({ height: '' });
                     $('.swiper-container').css({ height: $('.swiper-container').find(id).height() });
 
-                    window.rs.Swiper.reInit();
+                    window.rs.swiper.reInit();
                 }
         });
 
