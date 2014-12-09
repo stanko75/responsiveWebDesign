@@ -18,7 +18,7 @@ $(document).ready(function () {
             },
             onSlideChangeEnd: function (swiper, direction) {
                 switch (swiper.activeIndex) {
-                    case 2:
+                    case 1:
                         uri = 'api/realestate/GetRealEstatesWithCondition?from=';
                         searchQuery = '.swiper-slide-active>#realEstatesTable2>tbody:last';
                         id = "#realEstatesTable2";
