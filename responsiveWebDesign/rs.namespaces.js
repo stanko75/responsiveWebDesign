@@ -1,0 +1,1 @@
+﻿window.rs = window.rs || {};

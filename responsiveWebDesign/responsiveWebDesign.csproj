@@ -132,6 +132,8 @@
     <Content Include="lib\idangerous.swiper.js" />
     <Content Include="lib\idangerous.swiper.scrollbar-2.1.js" />
     <Content Include="lib\jquery-2.1.1.js" />
+    <Content Include="rs.namespaces.js" />
+    <Content Include="rs.swiper.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
