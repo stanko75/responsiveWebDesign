@@ -9,8 +9,3 @@
 
     ns.Bootstrapper = { init: init }
 }(window.rs));
-
-window.onload = function () {
-    window.rs.Bootstrapper.init();
-    startTheApp();
-}

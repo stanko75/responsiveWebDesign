@@ -4,16 +4,19 @@
     searchQuery = '#realEstatesTable > tbody:last',
     id = "#realEstatesTable";
 
-function startTheApp() {
+
+window.onload = function () {
+    window.rs.Bootstrapper.init();
+
     window.rs.LoadData.loadData(fromGlobal, numberOfRecordsGlobal, uri, id, searchQuery);
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         if ($("#realEstatesTable").height() < $(window).height()) {
             window.rs.LoadData.loadData(fromGlobal, numberOfRecordsGlobal, uri, id, searchQuery);
         }
     });
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(window).scrollTop() + $(window).height() == $(document).height()) {
             window.rs.LoadData.loadData(fromGlobal, numberOfRecordsGlobal, uri, id, searchQuery);
         }
