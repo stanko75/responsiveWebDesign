@@ -33,7 +33,7 @@
                 }
                 $(searchQuery).find("tr:gt(0)").remove();
                 $(id).find("tr:gt(0)").remove();
-                loadData(0, 10, uri, id, searchQuery);
+                window.rs.LoadData.loadData(0, 10, uri, id, searchQuery);
             }
         });
         return mySwipper;
