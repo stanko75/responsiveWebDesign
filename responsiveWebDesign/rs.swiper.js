@@ -26,7 +26,6 @@
                     break;
                 case 3:
                     uri = 'api/realestate/GetAllRealEstates?from=';
-                    //searchQuery = '#realEstatesTable > tbody:last';
                     searchQuery = '.swiper-slide-active>#realEstatesTable>tbody:last';
                     id = "#realEstatesTable";
                     break;

@@ -1,11 +1,10 @@
-﻿var fromGlobal = 0,
-    numberOfRecordsGlobal = 10,
-    uri = 'api/realestate/GetAllRealEstates?from=',
-    searchQuery = '#realEstatesTable > tbody:last',
-    id = "#realEstatesTable";
+﻿window.onload = function () {
+    var fromGlobal = 0,
+        numberOfRecordsGlobal = 10,
+        uri = 'api/realestate/GetAllRealEstates?from=',
+        searchQuery = '#realEstatesTable > tbody:last',
+        id = "#realEstatesTable";
 
-
-window.onload = function () {
     window.rs.Bootstrapper.init();
 
     window.rs.LoadData.loadData(fromGlobal, numberOfRecordsGlobal, uri, id, searchQuery);
