@@ -12,29 +12,9 @@
                     fromGlobal = from;
                     numberOfRecordsGlobal = numberOfRecordsGlobal;
 
-                    $.each(data, function(key, item) {
-
+                    $.each(data, function (key, item) {
                         $(searchQuery).append(
-                            '<tr>' +
-                            '<td>' + item.Id + '</td>' +
-                            '<td>' + item.Company + '</td>' +
-                            '<td>' + item.City + '</td>' +
-                            '<td>' + item.Location + '</td>' +
-                            '<td>' + item.Type + '</td>' +
-                            '<td>' + item.SquareMeters + '</td>' +
-                            '<td>' + item.Price + '</td>' +
-                            '<td>' +
-                            '<a href="' + item.Link + '" target=_blank>' +
-                            item.Link +
-                            '</a>' +
-                            '</td>' +
-                            '<td>' + item.Page + '</td>' +
-                            '<td>' + item.Active + '</td>' +
-                            '<td>' + item.UpdateTime + '</td>' +
-                            '<td>' + item.UpdateDate + '</td>' +
-                            '<td>' + item.InsertTime + '</td>' +
-                            '<td>' + item.InsertDate + '</td>' +
-                            '</tr>'
+                            self.appendTable(item)
                         );
                     });
                     if ($(id).height() < $(window).height()) {
@@ -46,6 +26,20 @@
                         window.rs.swiper.reInit();
                     }
                 });
+        }
+
+        self.appendTable = function (item) {
+            var preparedHTML = "";
+            for (var i in item) {
+                if (i == "Link") {
+                    preparedHTML = preparedHTML +
+                        '<td><a href="' + item[i] + '">' + item[i] + '</a></td>';
+                }
+                preparedHTML = preparedHTML + 
+                    '<td>' + item[i] + '</td>';
+            }
+
+            return '<tr>' + preparedHTML + '</tr>';
         }
     }
 
