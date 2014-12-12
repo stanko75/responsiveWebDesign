@@ -21,7 +21,7 @@
                         window.rs.LoadData.loadData(from, numberOfRecordsGlobal, uri, id, searchQuery);
                     } else {
                         $('.swiper-container').css({ height: '' });
-                        $('.swiper-container').css({ height: $('.swiper-container').find(id).height() });
+                        $('.swiper-container').css({ height: $(window).height() - 100 });
 
                         window.rs.swiper.reInit();
                     }
@@ -34,9 +34,10 @@
                 if (i == "Link") {
                     preparedHTML = preparedHTML +
                         '<td><a href="' + item[i] + '">' + item[i] + '</a></td>';
+                } else {
+                    preparedHTML = preparedHTML +
+                        '<td>' + item[i] + '</td>';
                 }
-                preparedHTML = preparedHTML + 
-                    '<td>' + item[i] + '</td>';
             }
 
             return '<tr>' + preparedHTML + '</tr>';
